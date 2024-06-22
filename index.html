@@ -23,7 +23,7 @@
       <div class="icons">
         <i class="fa fa-search"></i>
         <i class="fa fa-cart-shopping"></i>
-        <i class="fa-regular fa-user" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+        <i class="fa-regular fa-user" id="user"  ></i>
       </div>
     </nav>
   </header>
@@ -99,13 +99,13 @@
         <p>Subscribe to our newsletter To stay tuned about new arrivals and ongoing Sales.</p>
         <div class="news-input">
           <i class="fa fa-envelope" style="color:#DC7A1B"></i>
-          <input type="mail" placeholder="Your Email">
+          <input type="email" placeholder="Your Email">
         </div>
       </div>
     </div>
   </footer>
-  <div class="modal">
-    <div class="sign-in-modal">
+  <div class="modal"id="modal" >
+    <div class="sign-in-modal" >
       <div class="sign-up">
         <h1>Register Yourself</h1>
         <input type="text" id="reg-name"  placeholder="Enter Your Name">
@@ -117,13 +117,9 @@
           <label for="show-pass">Show Password</label>
         </div>
         <button type="submit" id="register">Register</button>
-                <div>
-          <input type="checkbox" id="reg-check" >
-          <label for="reg-check">I agree all the Terms and Conditions</label>
-        </div>
       </div>
       <div class="close-modal">
-        <button class="fa fa-multiply"></button>
+        <button class="fa fa-multiply" id="close-modal" onclick="closeRegistration()"></button>
       </div>
     </div>
   </div>

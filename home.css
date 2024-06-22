@@ -5,6 +5,9 @@
     font-family:"poppins";
 }
 
+.active-modal{
+  overflow:hidden;
+}
 
 header{
   width:100vw;
@@ -148,7 +151,7 @@ ul{
   align-items:center;
   border-radius:10px;
 }
-input[type=mail]{
+.news-input input[type=email]{
   outline:none;
   border:none;
   padding-left:10px;
@@ -160,7 +163,7 @@ input[type=mail]{
   z-index:100;
   width:100vw;
   height:100vh;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.50);
   display:none;
   justify-content:center;
   align-items:center;
