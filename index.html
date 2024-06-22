@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StyleEdge- home</title>
+
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h1><span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg</h1>
+      </div>
+      <div class="icons">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-cart-shopping"></i>
+        <i class="fa-regular fa-user" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+      </div>
+    </nav>
+  </header>
+  <section class="new-collection">
+    <div class="main">
+      <h1>SUMMER SALE IS LIVE !</h1>
+      <p>Enjoy Exciting Offers and Cashbacks</p>
+      <button id="explore">SHOP NOW</button>
+    </div>
+  </section>
+  <section class="customer-trust">
+    <div class="features">
+      <div class="delivery">
+        <i class="fa fa-truck-fast"></i>
+        <h3>Fast Delivery</h3>
+        <p>Free and Fast Delivery</p>
+      </div>
+      <div class="return">
+        <i class="fa fa-rotate-left"></i>
+        <h3>Return Policy</h3>
+        <p>Easy return and refunds</p>
+      </div>
+      <div class="support">
+        <i class="fa fa-headset"></i>
+        <h3>24/7 Support</h3>
+        <p>Customer Support</p>
+      </div>
+      <div class="payment">
+        <i class="fa fa-money-bill-transfer"></i>
+        <h3>Secure Payment</h3>
+        <p>Safe and Secure Payments</p>
+      </div>
+    </div>
+  </section>
+  <section class="home-shop-items">
+    <div class="trending-products">
+      <h1>Trending Products</h1>
+      <div class="shop-items" id="item-list">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div class="links">
+        <div class="Gallery">
+          <ul>
+            <li><b>Marketplace</b></li>
+            <li>Community</li>
+            <li>Trending</li>
+            <li>Picks</li>
+          </ul>
+        </div>
+        <div class="Marketplace">
+          <ul>
+            <li><b>Marketplace</b></li>
+            <li>Trending</li>
+            <li>Best Selling</li>
+            <li>Latest</li>
+          </ul>
+        </div>
+        <div class="Categories">
+          <ul>
+            <li><b>Categories</b></li>
+            <li>Clothing</li>
+            <li>Electronics</li>
+            <li>Furniture</li>
+          </ul>
+        </div>
+      </div>
+      <div class="newsletter">
+        <h4>Newsletter</h4>
+        <p>Subscribe to our newsletter To stay tuned about new arrivals and ongoing Sales.</p>
+        <div class="news-input">
+          <i class="fa fa-envelope" style="color:#DC7A1B"></i>
+          <input type="mail" placeholder="Your Email">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="modal">
+    <div class="sign-in-modal">
+      <div class="sign-up">
+        <h1>Register Yourself</h1>
+        <input type="text" id="reg-name"  placeholder="Enter Your Name">
+        <input type="email" id="reg-email"  placeholder="Enter your email">
+        <input type="password" id="reg-password"  placeholder="Create Password">
+        <input type="password" id="confirm-password"  placeholder="Confirm Password">
+        <div>
+          <input type="checkbox" id="show-pass">
+          <label for="show-pass">Show Password</label>
+        </div>
+        <button type="submit" id="register">Register</button>
+                <div>
+          <input type="checkbox" id="reg-check" >
+          <label for="reg-check">I agree all the Terms and Conditions</label>
+        </div>
+      </div>
+      <div class="close-modal">
+        <button class="fa fa-multiply"></button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>
