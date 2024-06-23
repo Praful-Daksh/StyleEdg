@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8">
   <title>StyleEdge- home</title>
 
   <link rel="stylesheet" href="home.css">
@@ -18,23 +18,26 @@
   <header>
     <nav>
       <div class="logo">
-        <h1><span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg</h1>
+        <h1 onclick="window.location.href = 'index.html'"><span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg</h1>
+      </div>
+      <div id="search-tab">
+        <input type="search" id="search-bar" placeholder="What you want to Buy !?">
       </div>
       <div class="icons">
-        <i class="fa fa-search"></i>
+        <i class="fa fa-search" id="search-icon"></i>
         <i class="fa fa-cart-shopping"></i>
-        <i class="fa-regular fa-user" id="user"  ></i>
+        <i class="fa-solid fa-user" id="user"></i>
       </div>
     </nav>
   </header>
-  <section class="new-collection">
+  <section class="new-collection" id="section-1">
     <div class="main">
       <h1>SUMMER SALE IS LIVE !</h1>
       <p>Enjoy Exciting Offers and Cashbacks</p>
       <button id="explore">SHOP NOW</button>
     </div>
   </section>
-  <section class="customer-trust">
+  <section class="customer-trust" id="section-2">
     <div class="features">
       <div class="delivery">
         <i class="fa fa-truck-fast"></i>
@@ -58,42 +61,19 @@
       </div>
     </div>
   </section>
-  <section class="home-shop-items">
+  <section class="home-shop-items" id="shop-items">
     <div class="trending-products">
       <h1>Trending Products</h1>
       <div class="shop-items" id="item-list">
+      </div>
+      <div id="no-result">
+
       </div>
     </div>
   </section>
 
   <footer>
     <div class="foot">
-      <div class="links">
-        <div class="Gallery">
-          <ul>
-            <li><b>Marketplace</b></li>
-            <li>Community</li>
-            <li>Trending</li>
-            <li>Picks</li>
-          </ul>
-        </div>
-        <div class="Marketplace">
-          <ul>
-            <li><b>Marketplace</b></li>
-            <li>Trending</li>
-            <li>Best Selling</li>
-            <li>Latest</li>
-          </ul>
-        </div>
-        <div class="Categories">
-          <ul>
-            <li><b>Categories</b></li>
-            <li>Clothing</li>
-            <li>Electronics</li>
-            <li>Furniture</li>
-          </ul>
-        </div>
-      </div>
       <div class="newsletter">
         <h4>Newsletter</h4>
         <p>Subscribe to our newsletter To stay tuned about new arrivals and ongoing Sales.</p>
@@ -104,19 +84,22 @@
       </div>
     </div>
   </footer>
-  <div class="modal"id="modal" >
-    <div class="sign-in-modal" >
+
+  <!--Regiatration Form -->
+
+  <div class="modal" id="modal">
+    <div class="sign-in-modal">
       <div class="sign-up">
         <h1>Register Yourself</h1>
-        <input type="text" id="reg-name"  placeholder="Enter Your Name">
-        <input type="email" id="reg-email"  placeholder="Enter your email">
-        <input type="password" id="reg-password"  placeholder="Create Password">
-        <input type="password" id="confirm-password"  placeholder="Confirm Password">
+        <input type="text" id="reg-name" placeholder="Enter Your Name">
+        <input type="email" id="reg-email" placeholder="Enter your email">
+        <input type="password" id="reg-password" placeholder="Create Password">
+        <input type="password" id="confirm-password" placeholder="Confirm Password">
         <div>
           <input type="checkbox" id="show-pass">
           <label for="show-pass">Show Password</label>
         </div>
-        <button type="submit" id="register">Register</button>
+        <button id="register">Register</button>
       </div>
       <div class="close-modal">
         <button class="fa fa-multiply" id="close-modal" onclick="closeRegistration()"></button>
@@ -125,7 +108,26 @@
   </div>
 
 
+  <!--Loader For Finding Products-->
+
+  <div id="wrap-loader">
+    <div class="loader">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <div class="bar4"></div>
+      <div class="bar5"></div>
+      <div class="bar6"></div>
+      <div class="bar7"></div>
+      <div class="bar8"></div>
+      <div class="bar9"></div>
+      <div class="bar10"></div>
+      <div class="bar11"></div>
+      <div class="bar12"></div>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
+
 
 </html>
