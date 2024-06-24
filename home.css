@@ -16,7 +16,7 @@ header{
   box-shadow:0 0 10px #C0C0C0;
   position:fixed;
   background-color:white;
-  z-index:10;
+  z-index:3;
 }
 nav{
   width:95vw;
@@ -185,7 +185,7 @@ footer{
   align-items:center;
 }
 .sign-in-modal{
-  width:85vw;
+  width:80vw;
   background:white;
   border-radius:10px;
     position:relative;
@@ -198,6 +198,7 @@ footer{
 }
 .sign-up input[type=text], input[type=email], input[type=password], #register {
   padding:6px 4px;
+  width: 100%;
 }
 #register{
   background-color:#FF8106;
@@ -231,6 +232,9 @@ footer{
   .features{
     grid-template-columns: repeat(4,1fr);
   }
+  .sign-in-modal{
+    width:50vw;
+  }
 }
 
 
@@ -250,6 +254,7 @@ footer{
   position:fixed;
   top:0;
   left:0;
+  z-index:5;
 }
 .loader {
   position: relative;
@@ -343,17 +348,52 @@ footer{
 
 
 
-/* css for fhe main loader */
 
-#main-loader{
-  display: none;
-  justify-content: center;
-  align-items: center ;
-  flex-direction: column;
+
+
+
+/* css for profile button*/
+
+.profile{
   width:100vw;
   height:100vh;
+  background-color:white;
+  display:none;
+  align-items:center;
+  flex-direction:column;
   position:absolute;
   top:0;
-  z-index:100;
-  background-color:white;
+  z-index:4;
+  padding-top:15px;
+}
+.back-icon{
+  height:fit-content;
+  padding-left:20px;
+  display:flex;
+  align-items:center;
+}
+.setting-head{
+  display:flex;
+  align-items:center;
+}
+
+.profile-head{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  text-align:left;
+  align-items:center;
+  height:fit-content;
+  width:100%;
+}
+.settings{
+  width:95vw;
+  display:grid;
+  gap:15px;
+  margin-top:20px;
+}
+.settings button{
+text-align:left;
+padding:5px 5px;
+border:.5px solid #AFAFAF;
+background-color:#F5F5F5;
 }

@@ -53,8 +53,17 @@ function cleanImageUrl(imageUrl) {
 
 var user = document.getElementById('user');
 user.addEventListener('click', () => {
-  if (!loggedIn)
+  if (!loggedIn){
     openRegistration();
+  }
+  else{
+    var profile = document.getElementById('profile');
+    profile.style.display = 'flex';
+    var backIcon = document.getElementById('back');
+    backIcon.addEventListener('click',()=>{
+      profile.style.display = 'none';
+    });
+  }
 });
 
 function openRegistration() {
@@ -108,9 +117,7 @@ function registerUser() {
           localStorage.setItem('userEmail', userMail);
           localStorage.setItem('userPas', userPass);
           closeRegistration();
-          user.classList.remove('fa-user');
-          user.classList.add('fa-gear');
-          window.reload();
+          location.reload();
         }
         else {
           console.log('password is not same as confirm password ');
