@@ -1,27 +1,45 @@
 console.log('width ' + window.innerWidth)
 showLoader();
+getHomeProducts();
+
+
 // getting products for home page
+
 
 async function getHomeProducts() {
   var result = await fetch('https://dummyjson.com/products?sortBy=brand&order=asc').then(result => result.json()).then(data => showonUi(data));
 
 }
-getHomeProducts();
+
+// showing products on home screen 
+
+let productTitles = [];
+class aProduct {
+  constructor(title, brand, price, description) {
+    this.title = title;
+    this.brand = brand;
+    this.price = price;
+    this.description = description;
+  }
+}
+
+// show on home function
 
 function showonUi(data) {
-  console.log(data)
-  itemList = document.getElementById('item-list');
-
+  
   var products = data.products;
   let index = 0;
-  itemList.innerHTML = '';
+  productTitles = [];
+  itemList = document.getElementById('item-list');
+    itemList.innerHTML = '';
 
+  
   if (products.length > 0) {
     products.forEach(() => {
       var item = document.createElement('div');
       item.className = 'item';
       item.innerHTML = ` <div class="image">
-                    <img src="${cleanImageUrl(products[index].images[0])}" width="100%">
+                    <img src="${products[index].images[0]}" width="100%">
           </div>
           <div class="item-details">
             <p>${products[index].title.slice(0,20)+'...'}</p>
@@ -29,23 +47,29 @@ function showonUi(data) {
             <p>₹${(products[index].price * 85).toFixed(0)}</p>
           </div>`;
       itemList.appendChild(item);
+
+// storing every product for using it another place 
+
+
+      productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description));
+
       index++;
+      
     });
+  
+    openProduct();
+    
     document.getElementById('no-result').innerHTML = '';
   }
+  
   else {
+    
     itemList.innerHTML = '';
     document.getElementById('no-result').innerHTML = '<h2>0 Results Found </h2>';
     document.getElementById('shop-items').style.paddingTop = '30px';
   }
+  
   hidLoader();
-}
-
-function cleanImageUrl(imageUrl) {
-  if (imageUrl.startsWith('["') && imageUrl.endsWith('"]')) {
-    return imageUrl.slice(2, -2);
-  }
-  return imageUrl;
 }
 
 
@@ -53,14 +77,14 @@ function cleanImageUrl(imageUrl) {
 
 var user = document.getElementById('user');
 user.addEventListener('click', () => {
-  if (!loggedIn){
+  if (!loggedIn) {
     openRegistration();
   }
-  else{
+  else {
     var profile = document.getElementById('profile');
     profile.style.display = 'flex';
     var backIcon = document.getElementById('back');
-    backIcon.addEventListener('click',()=>{
+    backIcon.addEventListener('click', () => {
       profile.style.display = 'none';
     });
   }
@@ -170,8 +194,8 @@ async function getSearchedProducts(searchValue) {
   var result = await fetch(`https://dummyjson.com/products/search?q=${searchValue}`).then(result => result.json()).then(data => showonUi(data));
 }
 
-
 // checking if user have registered or not
+
 let loggedIn = false;
 
 function login() {
@@ -181,6 +205,7 @@ function login() {
     user.classList.add('fa-gear');
   }
 }
+
 login();
 
 
@@ -195,3 +220,15 @@ function hidLoader() {
 }
 
 
+// when user click on a product
+
+function openProduct() {
+  var allProducts = document.querySelectorAll('.item');
+  if (allProducts) {
+    for (let count = 0; count < allProducts.length; count++) {
+      allProducts[count].addEventListener('click', () => {
+        console.log(productTitles[count]);
+      });
+    }
+  }
+}
