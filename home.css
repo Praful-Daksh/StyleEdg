@@ -7,7 +7,6 @@
 .wrap{
   width:100vw;
   height:100vh;
-  overflow:hidden;
 }
 
 header{
@@ -188,8 +187,7 @@ footer{
   width:80vw;
   background:white;
   border-radius:10px;
-    position:relative;
-
+  position:relative;
 }
 .sign-up{
   display:grid;
@@ -361,7 +359,7 @@ footer{
   display:none;
   align-items:center;
   flex-direction:column;
-  position:absolute;
+  position:fixed;
   top:0;
   z-index:4;
   padding-top:15px;
@@ -396,4 +394,46 @@ text-align:left;
 padding:5px 5px;
 border:.5px solid #AFAFAF;
 background-color:#F5F5F5;
+}
+
+/*Product view css*/
+
+.product-view{
+  width:100vw;
+  height:100vh;
+  background-color:rgba(0, 0, 0, 0.50);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+}
+.product-showcase{
+  width:75vw;
+  background-color:white;
+  border-radius:10px;
+  padding-bottom:30px;
+}
+.product-image{
+  width:85%;
+  height:350px;
+  background-color:lightgrey;
+  margin:auto;
+  margin-top:35px;
+}
+.product-info{
+  width:85%;
+  margin: 20px auto;
+  display:grid;
+}
+.product-info h3{
+  margin:5px 0;
+}
+.product-info button{
+  padding:10px 0;
+  margin:15px 0;
+  background-color:#2AEB7F;
+  border:none;
+  color:white;
 }

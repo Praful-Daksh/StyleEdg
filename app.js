@@ -15,25 +15,26 @@ async function getHomeProducts() {
 
 let productTitles = [];
 class aProduct {
-  constructor(title, brand, price, description) {
+  constructor(title, brand, price, description, image) {
     this.title = title;
     this.brand = brand;
     this.price = price;
     this.description = description;
+    this.image = image;
   }
 }
 
 // show on home function
 
 function showonUi(data) {
-  
+
   var products = data.products;
   let index = 0;
   productTitles = [];
   itemList = document.getElementById('item-list');
-    itemList.innerHTML = '';
+  itemList.innerHTML = '';
 
-  
+
   if (products.length > 0) {
     products.forEach(() => {
       var item = document.createElement('div');
@@ -48,27 +49,29 @@ function showonUi(data) {
           </div>`;
       itemList.appendChild(item);
 
-// storing every product for using it another place 
+      // storing every product for using it another place 
 
 
-      productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description));
+      productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description,
+        products[index].images[0]
+      ));
 
       index++;
-      
+
     });
-  
+
     openProduct();
-    
+
     document.getElementById('no-result').innerHTML = '';
   }
-  
+
   else {
-    
+
     itemList.innerHTML = '';
     document.getElementById('no-result').innerHTML = '<h2>0 Results Found </h2>';
     document.getElementById('shop-items').style.paddingTop = '30px';
   }
-  
+
   hidLoader();
 }
 
@@ -227,7 +230,23 @@ function openProduct() {
   if (allProducts) {
     for (let count = 0; count < allProducts.length; count++) {
       allProducts[count].addEventListener('click', () => {
-        console.log(productTitles[count]);
+        var showProduct = document.createElement('div');
+        showProduct.className = 'product-showcase';
+        showProduct.innerHTML = ` <div class="product-image">
+        <img src = "${productTitles[count].image}" width="100%" />
+      </div>
+      <div class="product-info">
+        <h3>${productTitles[count].title}</h3>
+        <p>${productTitles[count].brand}</p>
+        <h3>₹${(productTitles[count].price * 85).toFixed(0)}</h3>
+        <button><i class="fa fa-check"></i> Added to cart</button>
+        <p>${productTitles[count].description}</p>
+      </div>
+    </div>`;
+        var productShow = document.getElementById('viewProduct');
+        productShow.innerHTML = '';
+        productShow.appendChild(showProduct);
+        productShow.style.display = 'flex';
       });
     }
   }
