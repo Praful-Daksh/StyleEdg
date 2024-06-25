@@ -15,159 +15,179 @@
 </head>
 
 <body>
-  
+
   <!-- head -->
-<div class="wrap">
-  <header>
-    <nav>
-      <div class="logo">
-        <h1 onclick="window.location.href = 'index.html'"><span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg</h1>
-      </div>
-      <div id="search-tab">
-        <input type="search" id="search-bar" placeholder="What you want to Buy !?">
-      </div>
-      <div class="icons">
-        <i class="fa fa-search" id="search-icon"></i>
-        <i class="fa fa-cart-shopping"></i>
-        <i class="fa-solid fa-user" id="user"></i>
-      </div>
-    </nav>
-  </header>
-  
-  <!-- home main image-->
-  
-  <section class="new-collection" id="section-1">
-    <div class="main">
-      <h1>SUMMER SALE IS LIVE !</h1>
-      <p>Enjoy Exciting Offers and Cashbacks</p>
-      <button id="explore">SHOP NOW</button>
-    </div>
-  </section>
-  
-  <!-- Home feature items-->
-  
-  <section class="customer-trust" id="section-2">
-    <div class="features">
-      <div class="delivery">
-        <i class="fa fa-truck-fast"></i>
-        <h3>Fast Delivery</h3>
-        <p>Free and Fast Delivery</p>
-      </div>
-      <div class="return">
-        <i class="fa fa-rotate-left"></i>
-        <h3>Return Policy</h3>
-        <p>Easy return and refunds</p>
-      </div>
-      <div class="support">
-        <i class="fa fa-headset"></i>
-        <h3>24/7 Support</h3>
-        <p>Customer Support</p>
-      </div>
-      <div class="payment">
-        <i class="fa fa-money-bill-transfer"></i>
-        <h3>Secure Payment</h3>
-        <p>Safe and Secure Payments</p>
-      </div>
-    </div>
-  </section>
-  
-  <!--home products-->
-  
-  <section class="home-shop-items" id="shop-items">
-    <div class="trending-products">
-      <h1>Trending Products</h1>
-      <div class="shop-items" id="item-list">
-      </div>
-      <div id="no-result">
+  <div class="wrap">
+    <header>
+      <nav>
+        <div class="logo">
+          <h1 onclick="window.location.href = 'index.html'"><span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg</h1>
+        </div>
+        <div id="search-tab">
+          <input type="search" id="search-bar" placeholder="What you want to Buy !?">
+        </div>
+        <div class="icons">
+          <i class="fa fa-search" id="search-icon"></i>
+          <i class="fa fa-cart-shopping"></i>
+          <i class="fa-solid fa-user" id="user"></i>
+        </div>
+      </nav>
+    </header>
 
-      </div>
-    </div>
-  </section>
-  
-<!--footer-->
+    <!-- home main image-->
 
-  <footer>
-    <div class="foot">
-      <div class="newsletter">
-        <h4>Newsletter</h4>
-        <p>Subscribe to our newsletter To stay tuned about new arrivals and ongoing Sales.</p>
-        <div class="news-input">
-          <i class="fa fa-envelope" style="color:#DC7A1B"></i>
-          <input type="email" placeholder="Your Email">
+    <section class="new-collection" id="section-1">
+      <div class="main">
+        <h1>SUMMER SALE IS LIVE !</h1>
+        <p>Enjoy Exciting Offers and Cashbacks</p>
+        <button id="explore">SHOP NOW</button>
+      </div>
+    </section>
+
+    <!-- Home feature items-->
+
+    <section class="customer-trust" id="section-2">
+      <div class="features">
+        <div class="delivery">
+          <i class="fa fa-truck-fast"></i>
+          <h3>Fast Delivery</h3>
+          <p>Free and Fast Delivery</p>
+        </div>
+        <div class="return">
+          <i class="fa fa-rotate-left"></i>
+          <h3>Return Policy</h3>
+          <p>Easy return and refunds</p>
+        </div>
+        <div class="support">
+          <i class="fa fa-headset"></i>
+          <h3>24/7 Support</h3>
+          <p>Customer Support</p>
+        </div>
+        <div class="payment">
+          <i class="fa fa-money-bill-transfer"></i>
+          <h3>Secure Payment</h3>
+          <p>Safe and Secure Payments</p>
+        </div>
+      </div>
+    </section>
+
+    <!--home products-->
+
+    <section class="home-shop-items" id="shop-items">
+      <div class="trending-products">
+        <h1>Trending Products</h1>
+        <div class="shop-items" id="item-list">
+        </div>
+        <div id="no-result">
+
+        </div>
+      </div>
+    </section>
+
+    <!--footer-->
+
+    <footer>
+      <div class="foot">
+        <div class="newsletter">
+          <h4>Newsletter</h4>
+          <p>Subscribe to our newsletter To stay tuned about new arrivals and ongoing Sales.</p>
+          <div class="news-input">
+            <i class="fa fa-envelope" style="color:#DC7A1B"></i>
+            <input type="email" placeholder="Your Email">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!--Registration Form -->
+
+    <div class="modal" id="modal">
+      <div class="sign-in-modal">
+        <div class="sign-up">
+          <h1>Register Yourself</h1>
+          <input type="text" id="reg-name" placeholder="Enter Your Name">
+          <input type="email" id="reg-email" placeholder="Enter your email">
+          <input type="password" id="reg-password" placeholder="Create Password">
+          <input type="password" id="confirm-password" placeholder="Confirm Password">
+          <div>
+            <input type="checkbox" id="show-pass">
+            <label for="show-pass">Show Password</label>
+          </div>
+          <button id="register">Register</button>
+        </div>
+        <div class="close-modal">
+          <button class="fa fa-multiply" id="close-modal" onclick="closeRegistration()"></button>
         </div>
       </div>
     </div>
-  </footer>
 
-  <!--Registration Form -->
 
-  <div class="modal" id="modal">
-    <div class="sign-in-modal">
-      <div class="sign-up">
-        <h1>Register Yourself</h1>
-        <input type="text" id="reg-name" placeholder="Enter Your Name">
-        <input type="email" id="reg-email" placeholder="Enter your email">
-        <input type="password" id="reg-password" placeholder="Create Password">
-        <input type="password" id="confirm-password" placeholder="Confirm Password">
-        <div>
-          <input type="checkbox" id="show-pass">
-          <label for="show-pass">Show Password</label>
+    <!--Loader For Finding Products-->
+
+    <div id="wrap-loader">
+      <div class="loader">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+        <div class="bar7"></div>
+        <div class="bar8"></div>
+        <div class="bar9"></div>
+        <div class="bar10"></div>
+        <div class="bar11"></div>
+        <div class="bar12"></div>
+      </div>
+    </div>
+
+    <!--Profile -->
+
+    <div class="profile" id="profile">
+      <div class="profile-head">
+        <div class="back-icon">
+          <i class="fa fa-angle-left" id="back"></i>
         </div>
-        <button id="register">Register</button>
+        <div class="setting-heading">
+          <h2>Settings</h2>
+        </div>
       </div>
-      <div class="close-modal">
-        <button class="fa fa-multiply" id="close-modal" onclick="closeRegistration()"></button>
+      <div class="settings">
+        <button>Personal Info <i class="fa fa-angle-right"></i></button>
+        <button>Addresses <i class="fa fa-angle-right"></i></button>
+        <button>Orders  <i class="fa fa-angle-right"></i></button>
+        <button>Contact Us  <i class="fa fa-angle-right"></i></button>
       </div>
+
     </div>
-  </div>
+
+    <!--Product view -->
+
+    <div class="product-view" id="viewProduct">
+
+    </div>
 
 
-  <!--Loader For Finding Products-->
-
-  <div id="wrap-loader">
-    <div class="loader">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-      <div class="bar4"></div>
-      <div class="bar5"></div>
-      <div class="bar6"></div>
-      <div class="bar7"></div>
-      <div class="bar8"></div>
-      <div class="bar9"></div>
-      <div class="bar10"></div>
-      <div class="bar11"></div>
-      <div class="bar12"></div>
+    <!-- Notifications -->
+    <div class="notifications-container" id="notification-ar">
+  <div class="alert">
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 alert-svg">
+          <path clip-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" fill-rule="evenodd"></path>
+        </svg>
+      </div>
+      <div class="alert-prompt-wrap">
+        <p class="text-sm text-yellow-700" id="notify-msg">
+          All fields are required 
+        </p>
     </div>
   </div>
-  
-  <!--Profile -->
-  
-  <div class="profile" id="profile">
-    <div class="profile-head">
-      <div class="back-icon">
-        <i class="fa fa-angle-left" id="back"></i>
-      </div>
-      <div class="setting-heading">
-        <h2>Settings</h2>
-      </div>
-    </div>
-    <div class="settings">
-      <button>Personal Info</button>
-      <button>Addresses</button>
-      <button>Orders</button>
-      <button>Contact Us</button>
-    </div>
-    
   </div>
-  
-  <!--Product view -->
-  
-  <div class="product-view" id="viewProduct">
-   
 </div>
-  
-  <script src="app.js"></script>
+    
+    
+    <script src="app.js"></script>
 </body>
 
 

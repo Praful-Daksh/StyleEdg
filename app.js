@@ -147,19 +147,22 @@ function registerUser() {
           location.reload();
         }
         else {
-          console.log('password is not same as confirm password ');
+          notify('Password Is not Same As confirm Password ');
         }
       }
       else {
-        console.log('password is too short');
+        notify('Password Is too short');
       }
     }
     else {
-      console.log('username is too short or too long')
+      if(username.length<5)
+      notify('Username is too short');
+      else
+      notify('Username is Too long');
     }
   }
   else {
-    console.log('All fields are required ');
+    notify('All fields are must be filled.')
   }
 }
 
@@ -250,4 +253,17 @@ function openProduct() {
       });
     }
   }
+}
+
+// notification function
+
+var notifyArea = document.getElementById('notification-area');
+var notifyMsg = document.getElementById('notify-msg');
+
+function notify(msg){
+  notifyMsg.textContent = msg;
+  notifyArea.style.display = 'flex';
+  setTimeout(()=>{
+    notifyArea.style.display = 'none';
+  },2000);
 }
