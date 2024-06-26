@@ -338,5 +338,42 @@ function adBtnClick(add) {
       BtnMsg.textContent = 'Added To Cart';
     }
   })
-
 }
+
+
+// cart button event
+
+var cart = document.getElementById('cart');
+var cartItems = document.getElementById('cartItems');
+cart.addEventListener('click', () => {
+  var j=0;
+  var viewCart = document.getElementById('ViewCart');
+  if (addedItemsInCart.length > 0) {
+    viewCart.style.display = 'flex';
+    addedItemsInCart.forEach(() => {
+      var cartItem = document.createElement('div');
+      cartItem.className = 'cart-item';
+      cartItem.innerHTML = `              <div class="item-image">
+              </div>
+              <div class="item-info">
+                <div class="item-title">
+                  <h4>${addedItemsInCart[j].title}</h4>
+                  <button>X</button>
+                </div>
+                <p>${addedItemsInCart[j].brand}</p>
+                <div class="item-price">
+                  <h4>₹${(addedItemsInCart[j].price * 85).toFixed(0)}</h4>
+                  <div class="item-quantity">
+                    <button>-</button>
+                    <button disabled>1</button>
+                    <button>+</button>
+                  </div>
+                </div>
+              </div>
+        </div>`;
+      cartItems.innerHTML = '';
+      cartItems.appendChild(cartItem);
+     j++;
+    });
+  }
+})
