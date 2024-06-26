@@ -23,6 +23,8 @@ class aProduct {
     this.image = image;
   }
 }
+var addedItemsInCart = [];
+
 
 // show on home function
 
@@ -55,7 +57,6 @@ function showonUi(data) {
       productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description,
         products[index].images[0]
       ));
-
       index++;
 
     });
@@ -155,10 +156,10 @@ function registerUser() {
       }
     }
     else {
-      if(username.length<5)
-      notify('Username is too short');
+      if (username.length < 5)
+        notify('Username is too short');
       else
-      notify('Username is Too long');
+        notify('Username is Too long');
     }
   }
   else {
@@ -231,39 +232,111 @@ function hidLoader() {
 function openProduct() {
   var allProducts = document.querySelectorAll('.item');
   if (allProducts) {
-    for (let count = 0; count < allProducts.length; count++) {
+    for (let count = 0; count < allProducts.length; count++)
+    {
       allProducts[count].addEventListener('click', () => {
         var showProduct = document.createElement('div');
         showProduct.className = 'product-showcase';
         showProduct.innerHTML = ` <div class="product-image">
-        <img src = "${productTitles[count].image}" width="100%" />
+        <img src = "${productTitles[count].image}" width="100%" height="100%" />
       </div>
       <div class="product-info">
         <h3>${productTitles[count].title}</h3>
         <p>${productTitles[count].brand}</p>
         <h3>₹${(productTitles[count].price * 85).toFixed(0)}</h3>
-        <button><i class="fa fa-check"></i> Added to cart</button>
+        <button class="CartBtn" id="addCart">
+        <span class="IconContainer"> 
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
+          </span>
+        <p class="text" id ="addCart-msg">Add to Cart</p>
+        </button>
         <p>${productTitles[count].description}</p>
-      </div>
-    </div>`;
+        </div>
+        </div>`;
+
         var productShow = document.getElementById('viewProduct');
         productShow.innerHTML = '';
         productShow.appendChild(showProduct);
         productShow.style.display = 'flex';
+
+        var addCartBtn = document.getElementById('addCart');
+        var addBtnMsg = document.getElementById('addCart-msg');
+        var isAdded = false;
+
+        if (isItemAdded(productTitles[count])) {
+          addCartBtn.style.backgroundColor = 'rgba(0, 218, 118, 1)';
+          addBtnMsg.textContent = 'Added To Cart';
+        }
+        else {
+          addCartBtn.style.backgroundColor = 'rgba(255, 203, 4, 1)';
+          addBtnMsg.textContent = 'Add To Cart';
+        }
+        adBtnClick(productTitles[count]);
       });
     }
   }
+  closeProductView();
 }
+
+// close product view 
+
+function closeProductView() {
+  var productContainer = document.getElementById('viewProduct');
+
+  productContainer.addEventListener('click', (e) => {
+    if (e.target == productContainer)
+      productContainer.style.display = 'none';
+  })
+}
+
 
 // notification function
 
 var notifyArea = document.getElementById('notification-area');
 var notifyMsg = document.getElementById('notify-msg');
 
-function notify(msg){
+function notify(msg) {
   notifyMsg.textContent = msg;
   notifyArea.style.display = 'flex';
-  setTimeout(()=>{
+  setTimeout(() => {
     notifyArea.style.display = 'none';
-  },2000);
+  }, 2000);
+}
+
+
+// check if item is added in cart
+
+function isItemAdded(item) {
+  if (addedItemsInCart.length > 0) {
+    for (let i = 0; i < addedItemsInCart.length; i++) {
+      if (addedItemsInCart[i] == item) {
+        return true;
+      }
+    }
+  }
+  else {
+    return false;
+  }
+}
+
+
+/* on click of add to cart btn */
+
+function adBtnClick(add) {
+  var addBtn = document.getElementById('addCart');
+  var BtnMsg = document.getElementById('addCart-msg');
+  addBtn.addEventListener('click', () => {
+    if (isItemAdded(add)) {
+      const index = addedItemsInCart.findIndex(item => item === add);
+      addedItemsInCart.splice(index, 1);
+      addBtn.style.backgroundColor = 'rgba(255, 203, 4, 1)';
+      BtnMsg.textContent = 'Add To Cart';
+    }
+    else {
+      addedItemsInCart.push(add);
+      addBtn.style.backgroundColor = 'rgba(0, 218, 118, 1)';
+      BtnMsg.textContent = 'Added To Cart';
+    }
+  })
+
 }
