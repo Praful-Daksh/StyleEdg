@@ -346,10 +346,11 @@ function adBtnClick(add) {
 var cart = document.getElementById('cart');
 var cartItems = document.getElementById('cartItems');
 cart.addEventListener('click', () => {
-  var j=0;
+  var j = 0;
   var viewCart = document.getElementById('ViewCart');
   if (addedItemsInCart.length > 0) {
     viewCart.style.display = 'flex';
+    cartItems.innerHTML = '';
     addedItemsInCart.forEach(() => {
       var cartItem = document.createElement('div');
       cartItem.className = 'cart-item';
@@ -371,9 +372,8 @@ cart.addEventListener('click', () => {
                 </div>
               </div>
         </div>`;
-      cartItems.innerHTML = '';
       cartItems.appendChild(cartItem);
-     j++;
+      j++;
     });
   }
 })
