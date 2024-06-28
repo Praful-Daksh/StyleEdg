@@ -5,7 +5,6 @@ getHomeProducts();
 
 // getting products for home page
 
-
 async function getHomeProducts() {
   var result = await fetch('https://dummyjson.com/products?sortBy=brand&order=asc').then(result => result.json()).then(data => showonUi(data));
 
@@ -31,7 +30,6 @@ if (localStorage.getItem('CartItems'))
 console.log(addedItemsInCart)
 
 
-
 // show on home function
 
 function showonUi(data) {
@@ -41,7 +39,6 @@ function showonUi(data) {
   productTitles = [];
   itemList = document.getElementById('item-list');
   itemList.innerHTML = '';
-
 
   if (products.length > 0) {
     products.forEach(() => {
@@ -64,7 +61,6 @@ function showonUi(data) {
         (products[index].images[1]) ? products[index].images[1] : products[index].images[0],
       ));
       index++;
-
     });
 
     openProduct();
@@ -83,7 +79,7 @@ function showonUi(data) {
 }
 
 
-//sign-up form
+//sign-up form------------------------------------------------------------------------------
 
 var user = document.getElementById('user');
 user.addEventListener('click', () => {
@@ -92,10 +88,10 @@ user.addEventListener('click', () => {
   }
   else {
     var profile = document.getElementById('profile');
-    profile.style.display = 'flex';
+    profile.classList.add('open');
     var backIcon = document.getElementById('back');
     backIcon.addEventListener('click', () => {
-      profile.style.display = 'none';
+      profile.classList.remove('open');
     });
   }
 });
@@ -114,7 +110,7 @@ function closeRegistration() {
   }
 }
 
-//show password 
+//show password ----------------------------------------------------
 
 var password = document.getElementById('reg-password');
 var confirmPassword = document.getElementById('confirm-password');
@@ -131,7 +127,7 @@ showPas.addEventListener('click', () => {
 });
 
 
-// register a user
+// register a user----------------------------------------------------
 
 var registerButton = document.getElementById('register');
 registerButton.addEventListener('click', registerUser);
@@ -174,7 +170,7 @@ function registerUser() {
 }
 
 
-// opening search bar 
+// opening search bar ----------------------------------------------------
 
 var searchBar = document.getElementById('search-bar');
 var searchIcon = document.getElementById('search-icon');
@@ -184,11 +180,10 @@ searchIcon.addEventListener('click', () => {
 
 
 
-// getting input from search bar
+// getting input from search bar----------------------------------------------------
+
 let sectionOne = document.getElementById('section-1');
 let sectionTwo = document.getElementById('section-2');
-
-
 
 searchBar.addEventListener('keyup', (e) => {
   if (e.key == "Enter")
@@ -207,7 +202,7 @@ async function getSearchedProducts(searchValue) {
   var result = await fetch(`https://dummyjson.com/products/search?q=${searchValue}`).then(result => result.json()).then(data => showonUi(data));
 }
 
-// checking if user have registered or not
+// checking if user have registered or not----------------------------------------------------
 
 let loggedIn = false;
 
@@ -222,7 +217,7 @@ function login() {
 login();
 
 
-// loader 
+// loader ----------------------------------------------------
 
 function showLoader() {
   document.getElementById('wrap-loader').style.display = 'flex';
@@ -233,7 +228,7 @@ function hidLoader() {
 }
 
 
-// when user click on a product
+// when user click on a product----------------------------------------------------
 
 function openProduct() {
   var allProducts = document.querySelectorAll('.item');
@@ -284,7 +279,7 @@ function openProduct() {
   closeProductView();
 }
 
-// close product view 
+// close product view ----------------------------------------------------
 
 function closeProductView() {
   var productContainer = document.getElementById('viewProduct');
@@ -296,21 +291,21 @@ function closeProductView() {
 }
 
 
-// notification function
+// notification function----------------------------------------------------
 
 var notifyArea = document.getElementById('notification-area');
 var notifyMsg = document.getElementById('notify-msg');
 
 function notify(msg) {
   notifyMsg.textContent = msg;
-  notifyArea.style.display = 'flex';
+  notifyArea.classList.add('open');
   setTimeout(() => {
-    notifyArea.style.display = 'none';
+    notifyArea.classList.remove('open');
   }, 3000);
 }
 
 
-// check if item is added in cart
+// check if item is added in cart----------------------------------------------------
 
 function isItemAdded(item) {
   if (addedItemsInCart) {
@@ -326,7 +321,7 @@ function isItemAdded(item) {
 }
 
 
-/* on click of add to cart btn */
+/* on click of add to cart btn  ----------------------------------------------------*/
 
 function adBtnClick(add) {
   var addBtn = document.getElementById('addCart');
@@ -348,7 +343,7 @@ function adBtnClick(add) {
 }
 
 
-// cart button event
+// cart button event----------------------------------------------------
 
 var totalAmount = 0;
 var cart = document.getElementById('cart');
@@ -380,7 +375,7 @@ cart.addEventListener('click', () => {
 });
 
 
-// update total amount in cart
+// update total amount in cart----------------------------------------------------
 
 var checkoutBtn = document.getElementById('checkout');
 
@@ -404,7 +399,7 @@ function updateAmount() {
   }
 }
 
-// remove item event cart
+// remove item event cart----------------------------------------------------
 
 function removeItemCart() {
   var cartProducts = document.querySelectorAll('.cart-item');
@@ -419,5 +414,51 @@ function removeItemCart() {
       localStorage.setItem('CartItems', JSON.stringify(addedItemsInCart));
     })
   }
+}
 
+// settings view --------------------------------------------------------------
+
+var personalBtn = document.getElementById('personal');
+var addressBtn = document.getElementById('address');
+var ordersBtn = document.getElementById('orders');
+var contactBtn = document.getElementById('contact');
+var personalInfoModal = document.getElementById('personalInfoTrigger');
+var backPersonalModal = document.getElementById('personal-back');
+var profileUserName = document.getElementById('user-name');
+var profileUserMail = document.getElementById('user-mail');
+var saveBtn = document.getElementById('personalInfoSave');
+
+personalBtn.addEventListener('click', () => {
+
+  personalInfoModal.classList.add('scale');
+
+  profileUserName.value = localStorage.getItem('userName');
+  profileUserMail.value = localStorage.getItem('userEmail');
+  saveBtn.disabled = true;
+
+})
+backPersonalModal.addEventListener('click', () => {
+  if (profileUserName.value == localStorage.getItem('userName') && profileUserMail.value == localStorage.getItem('userEmail')) 
+  {
+    personalInfoModal.classList.remove('scale');
+  }
+  else{
+   if(confirm('Are you sure to Discard changes')){
+      personalInfoModal.classList.remove('scale');
+   }
+  }
+})
+
+profileUserName.addEventListener('keydown',saveUserDetails);
+profileUserMail.addEventListener('keydown',saveUserDetails);
+
+function saveUserDetails(){
+    if(profileUserName.value != localStorage.getItem('userName') || profileUserMail.value != localStorage.getItem('UserEmail')){
+    saveBtn.disabled = false;
+    saveBtn.addEventListener('click',()=>{
+      localStorage.setItem('userName',profileUserName.value);
+      localStorage.setItem('userEmail',profileUserMail.value);
+      notify('Saved Details');
+    })
+  }
 }

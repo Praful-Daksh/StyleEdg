@@ -164,7 +164,7 @@ footer{
   position: fixed;
   top:0;
   left:0;
-  z-index:100;
+  z-index:10;
   width:100vw;
   height:100vh;
   background-color: rgba(0, 0, 0, 0.50);
@@ -183,7 +183,7 @@ footer{
   grid-gap:30px;
   padding:25px 30px;
 }
-.sign-up input[type=text], input[type=email], input[type=password], #register {
+.sign-up input[type=text], .sign-up input[type=email] ,.sign-up input[type=password], .sign-up #register {
   padding:6px 4px;
   width: 100%;
 }
@@ -300,14 +300,18 @@ footer{
   width:100vw;
   height:100vh;
   background-color:white;
-  display:none;
+  display:flex;
   align-items:center;
   flex-direction:column;
   position:fixed;
   top:0;
+  right:-100%;
   z-index:4;
   padding-top:15px;
+  transition:right 0.3s ease;
 }
+
+
 .back-icon{
   height:fit-content;
   padding-left:20px;
@@ -440,14 +444,14 @@ align-items:center;
   height: auto;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 1rem;
   position:fixed;
-  top:10px;
-  right:5px;
+  top:50px;
+  right:-100%;
   z-index:1000;
-  transition-duration: .5s;
+  transition: right .5s ease;
 }
 .flex {
   display: flex;
@@ -600,3 +604,64 @@ align-items:center;
    width:15px;
    font-size:20px;
  }
+ 
+ .open{
+  right:0;
+}
+
+/* personal info button ------------------------- -------------------------*/
+
+.personal-info{
+  width:100vw;
+  height:100vh;
+  z-index:500;
+  background-color:transparent;
+  position:fixed;
+  top:0;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  transform:scale(0.001);
+  transition: .3s ease;
+}
+.information{
+  width:70vw;
+  height:40vh;
+  background-color:white;
+  display: flex ;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0px 0px 25px  #B1B1B1;
+  border-radius:12px;
+  
+}
+.scale{
+  transform:scale(1);
+}
+.information input{
+ width:70%;
+ margin-top:15px;
+ padding:5px 4px;
+ font-size:1rem;
+}
+.information input[type=email]{
+  margin-bottom:5px;
+}
+.information button{
+  margin:10px 0;
+  padding:3px 2px;
+  width:30%;
+}
+.personal-image{
+  width:80px;
+  height:80px;
+  background-color:lightgrey;
+  border-radius:100%;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  font-size:5rem;
+  overflow:hidden;
+  color:#FFFFFF;
+}
