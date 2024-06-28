@@ -169,7 +169,7 @@
 
 
     <!-- Notifications -->
-    <div class="notifications-container" id="notification-ar">
+    <div class="notifications-container" id="notification-area">
       <div class="alert">
         <div class="flex">
           <div class="flex-shrink-0">
@@ -201,10 +201,14 @@
             </div>
             <button id="checkout">Checkout</button>
           </div>
-          <button id="closeCart" class="fa fa-angle-left" onclick="document.getElementById('ViewCart').style.display = 'none';"></button>
+          <button id="closeCart" class="fa fa-angle-left" onclick="document.getElementById('ViewCart').style.display = 'none';
+          location.reload();"></button>
         </div>
       </div>
     </div>
+
+
+
 
     <script src="app.js"></script>
 </body>

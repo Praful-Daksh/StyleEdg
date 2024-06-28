@@ -295,7 +295,7 @@ footer{
   transform: rotate(330deg) translate(0, -130%);
   animation-delay: -0.1s;
 }
-/* css for profile button*/
+/* css for profile button-----------------------------------------*/
 .profile{
   width:100vw;
   height:100vh;
@@ -313,6 +313,7 @@ footer{
   padding-left:20px;
   display:flex;
   align-items:center;
+  font-size: 1.5rem;
 }
 .setting-head{
   display:flex;
@@ -337,12 +338,12 @@ text-align:left;
 padding:8px 5px;
 border:.5px solid #AFAFAF;
 background-color:#F5F5F5;
-font-size:1.5rem;
+font-size:1.2rem;
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
-/*Product view css*/
+/*Product view css-----------------------------------------*/
 .product-view{
   width:100vw;
   height:100vh;
@@ -433,7 +434,7 @@ align-items:center;
   transform: scale(0.95);
   transition-duration: .5s;
 }
-/* notifications */
+/* notification-----------------------------------------*/
 .notifications-container {
   width: 320px;
   height: auto;
@@ -446,6 +447,7 @@ align-items:center;
   top:10px;
   right:5px;
   z-index:1000;
+  transition-duration: .5s;
 }
 .flex {
   display: flex;
@@ -477,7 +479,8 @@ align-items:center;
 .alert-prompt-link:hover {
   color: rgb(202 138 4);
 }
-/* responsive*/
+
+/* responsive-----------------------------------------*/
 @media(min-width:980px){
   .shop-items{
     grid-template-columns: repeat(4,1fr);
@@ -497,8 +500,11 @@ align-items:center;
   .product-image{
     height:400px;
   } 
+  .mid-notification{
+    transform: scale(1.5);
+  }
 }
-/* Cart */
+/* Cart----------_----------------------------_---_----_- */
 .cart-view{
   width:100vw;
   height:100vh;
@@ -536,8 +542,7 @@ align-items:center;
 }
 .item-image{
   width:20%;
-  height:80%;
-  background-color: #DADADA;
+  height:100%;
 }
 .item-info{
   width:80%;

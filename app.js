@@ -15,16 +15,21 @@ async function getHomeProducts() {
 
 let productTitles = [];
 class aProduct {
-  constructor(title, brand, price, description, image, quantity) {
+  constructor(title, brand, price, description, image) {
     this.title = title;
     this.brand = brand;
     this.price = price;
     this.description = description;
     this.image = image;
-    this.quantity = quantity;
   }
-}
+};
+
 var addedItemsInCart = [];
+
+if(localStorage.getItem('CartItems'))
+  addedItemsInCart =  JSON.parse(localStorage.getItem('CartItems'));
+  console.log(addedItemsInCart)
+
 
 
 // show on home function
@@ -56,8 +61,7 @@ function showonUi(data) {
 
 
       productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description,
-        products[index].images[0],
-        1
+        products[index].images[1],
       ));
       index++;
 
@@ -206,7 +210,6 @@ async function getSearchedProducts(searchValue) {
 // checking if user have registered or not
 
 let loggedIn = false;
-
 function login() {
   if (localStorage.getItem('userName')) {
     loggedIn = true;
@@ -302,16 +305,16 @@ function notify(msg) {
   notifyArea.style.display = 'flex';
   setTimeout(() => {
     notifyArea.style.display = 'none';
-  }, 2000);
+  }, 3000);
 }
 
 
 // check if item is added in cart
 
 function isItemAdded(item) {
-  if (addedItemsInCart.length > 0) {
+  if (addedItemsInCart) {
     for (let i = 0; i < addedItemsInCart.length; i++) {
-      if (addedItemsInCart[i] == item) {
+      if (addedItemsInCart[i].title == item.title) {
         return true;
       }
     }
@@ -339,45 +342,46 @@ function adBtnClick(add) {
       addBtn.style.backgroundColor = 'rgba(0, 218, 118, 1)';
       BtnMsg.textContent = 'Added To Cart';
     }
+    localStorage.setItem('CartItems',JSON.stringify(addedItemsInCart));
   })
 }
 
 
 // cart button event
 
-
-
 var totalAmount = 0;
 var cart = document.getElementById('cart');
 var cartItems = document.getElementById('cartItems');
+var j = 0;
+var viewCart = document.getElementById('ViewCart');
 cart.addEventListener('click', () => {
-  var j = 0;
-  var viewCart = document.getElementById('ViewCart');
-  if (addedItemsInCart.length > 0) {
-
-    viewCart.style.display = 'flex';
-    cartItems.innerHTML = '';
-
-    addedItemsInCart.forEach(() => {
-
-      var cartItem = document.createElement('div');
-      cartItem.className = 'cart-item';
-      cartItem.innerHTML = ` <div class="item-image"><img src="${addedItemsInCart[j].image}" width="100%" height="100%"/></div><div class="item-info"><div class="item-title"><h4>${addedItemsInCart[j].title}</h4><button id="removeItem" class="fa fa-times removeItem"></button></div><p>${addedItemsInCart[j].brand}</p><div class="item-price"><h4>₹${(addedItemsInCart[j].price * 85).toFixed(0)}</h4><div class="item-quantity"><button class="decQuantity">-</button><button disabled class="Quantity">1</button><button class="incQuantity">+</button></div></div></div></div>`;
-
-      cartItems.appendChild(cartItem);
-        
-      j++;
-      updateAmount();
-    });
-    removeItemCart();
+  if (loggedIn) {
+    if (addedItemsInCart.length > 0) {
+      viewCart.style.display = 'flex';
+      cartItems.innerHTML = '';
+      addedItemsInCart.forEach(() => {
+        var cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = ` <div class="item-image"><img src="${addedItemsInCart[j].image}" width="100%" height="100%"/></div><div class="item-info"><div class="item-title"><h4>${addedItemsInCart[j].title}</h4><button id="removeItem" class="fa fa-times removeItem"></button></div><p>${addedItemsInCart[j].brand}</p><div class="item-price"><h4>₹${(addedItemsInCart[j].price * 85).toFixed(0)}</h4></div></div></div>`;
+        cartItems.appendChild(cartItem);
+        j++;
+        updateAmount();
+      });
+      removeItemCart();
+    }
+    else {
+      notify('Cart Empty');
+    }
   }
-  else {
-    console.log('Cart Empty');
+  else{
+    notify('Register Yourself')
   }
 });
 
-var checkoutBtn = document.getElementById('checkout');
+
 // update total amount in cart
+
+var checkoutBtn = document.getElementById('checkout');
 
 function updateAmount() {
   if (addedItemsInCart.length > 0) {
@@ -399,19 +403,20 @@ function updateAmount() {
   }
 }
 
-// incr / decr quantity of product in cart
+// remove item event cart
 
-
-function removeItemCart(){
+function removeItemCart() {
   var cartProducts = document.querySelectorAll('.cart-item');
   var remItem = document.querySelectorAll('.removeItem');
-    for (let i = 0; i < cartProducts.length; i++) {
-      remItem[i].addEventListener('click', () => {
-        const index = addedItemsInCart.findIndex(item => item.title == remItem[i].parentElement.textContent);
-        addedItemsInCart.splice(index, 1);
-        cartItems.removeChild(cartProducts[i]);
-        console.log('remove')
-        updateAmount();
-      })
-    }
+  for (let i = 0; i < cartProducts.length; i++) {
+    remItem[i].addEventListener('click', () => {
+      const index = addedItemsInCart.findIndex(item => item.title == remItem[i].parentElement.textContent);
+      addedItemsInCart.splice(index, 1);
+      cartItems.removeChild(cartProducts[i]);
+      console.log('remove')
+      updateAmount();
+      localStorage.setItem('CartItems',JSON.stringify(addedItemsInCart));
+    })
+  }
+  
 }
