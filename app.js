@@ -26,9 +26,9 @@ class aProduct {
 
 var addedItemsInCart = [];
 
-if(localStorage.getItem('CartItems'))
-  addedItemsInCart =  JSON.parse(localStorage.getItem('CartItems'));
-  console.log(addedItemsInCart)
+if (localStorage.getItem('CartItems'))
+  addedItemsInCart = JSON.parse(localStorage.getItem('CartItems'));
+console.log(addedItemsInCart)
 
 
 
@@ -61,7 +61,7 @@ function showonUi(data) {
 
 
       productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description,
-        products[index].images[1],
+        (products[index].images[1]) ? products[index].images[1] : products[index].images[0],
       ));
       index++;
 
@@ -210,6 +210,7 @@ async function getSearchedProducts(searchValue) {
 // checking if user have registered or not
 
 let loggedIn = false;
+
 function login() {
   if (localStorage.getItem('userName')) {
     loggedIn = true;
@@ -342,7 +343,7 @@ function adBtnClick(add) {
       addBtn.style.backgroundColor = 'rgba(0, 218, 118, 1)';
       BtnMsg.textContent = 'Added To Cart';
     }
-    localStorage.setItem('CartItems',JSON.stringify(addedItemsInCart));
+    localStorage.setItem('CartItems', JSON.stringify(addedItemsInCart));
   })
 }
 
@@ -373,7 +374,7 @@ cart.addEventListener('click', () => {
       notify('Cart Empty');
     }
   }
-  else{
+  else {
     notify('Register Yourself')
   }
 });
@@ -415,8 +416,8 @@ function removeItemCart() {
       cartItems.removeChild(cartProducts[i]);
       console.log('remove')
       updateAmount();
-      localStorage.setItem('CartItems',JSON.stringify(addedItemsInCart));
+      localStorage.setItem('CartItems', JSON.stringify(addedItemsInCart));
     })
   }
-  
+
 }
