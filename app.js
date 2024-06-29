@@ -468,6 +468,7 @@ var addressView = document.getElementById('address-view');
 var closeAddress = document.getElementById('close-address');
 var newaddressBtn = document.querySelector('new-address');
 var deleteAddressBtn = document.querySelectorAll('.delete-address');
+let a= 0;
 
 addressBtn.addEventListener('click',()=>{
   addressView.classList.add('scale');
@@ -476,7 +477,7 @@ addressBtn.addEventListener('click',()=>{
   })
 });
 
-if(deleteAddressBtn.length != 0){
+if(deleteAddressBtn.length > 0){
 deleteAddressBtn.forEach(()=>{
   deleteAddressBtn[a].addEventListener('click',(e)=>{
     if(confirm('Are you sure ?'))
