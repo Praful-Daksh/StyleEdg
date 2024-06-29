@@ -358,7 +358,7 @@ cart.addEventListener('click', () => {
       addedItemsInCart.forEach(() => {
         var cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
-        cartItem.innerHTML = ` <div class="item-image"><img src="${addedItemsInCart[j].image}" width="100%" height="100%"/></div><div class="item-info"><div class="item-title"><h4>${addedItemsInCart[j].title}</h4><button id="removeItem" class="fa fa-times removeItem"></button></div><p>${addedItemsInCart[j].brand}</p><div class="item-price"><h4>₹${(addedItemsInCart[j].price * 85).toFixed(0)}</h4></div></div></div>`;
+        cartItem.innerHTML = ` <div class="item-image"><img src="${addedItemsInCart[j].image}" width="100%" loading="lazy" height="100%"/></div><div class="item-info"><div class="item-title"><h4>${addedItemsInCart[j].title}</h4><button id="removeItem" class="fa fa-times removeItem"></button></div><p>${addedItemsInCart[j].brand}</p><div class="item-price"><h4>₹${(addedItemsInCart[j].price * 85).toFixed(0)}</h4></div></div></div>`;
         cartItems.appendChild(cartItem);
         j++;
         updateAmount();
@@ -418,10 +418,8 @@ function removeItemCart() {
 
 // settings view --------------------------------------------------------------
 
+// personal info btn
 var personalBtn = document.getElementById('personal');
-var addressBtn = document.getElementById('address');
-var ordersBtn = document.getElementById('orders');
-var contactBtn = document.getElementById('contact');
 var personalInfoModal = document.getElementById('personalInfoTrigger');
 var backPersonalModal = document.getElementById('personal-back');
 var profileUserName = document.getElementById('user-name');
@@ -462,3 +460,40 @@ function saveUserDetails(){
     })
   }
 }
+
+// address btn
+
+var addressBtn = document.getElementById('address');
+var addressView = document.getElementById('address-view');
+var closeAddress = document.getElementById('close-address');
+var newaddressBtn = document.querySelector('new-address');
+var deleteAddressBtn = document.querySelectorAll('.delete-address');
+
+addressBtn.addEventListener('click',()=>{
+  addressView.classList.add('scale');
+  closeAddress.addEventListener('click',()=>{
+    addressView.classList.remove('scale');
+  })
+});
+
+if(deleteAddressBtn.length != 0){
+deleteAddressBtn.forEach(()=>{
+  deleteAddressBtn[a].addEventListener('click',(e)=>{
+    if(confirm('Are you sure ?'))
+    allAddress.removeChild(e.target.parentElement.parentElement)
+  })
+})
+}
+else{
+  allAddress.innerHTML = '<h2>Click New for add a address</h2>'
+}
+
+
+// orders btn
+
+var ordersBtn = document.getElementById('orders');
+
+
+
+// contact us btn
+var contactBtn = document.getElementById('contact');
