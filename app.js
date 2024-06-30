@@ -27,7 +27,6 @@ var addedItemsInCart = [];
 
 if (localStorage.getItem('CartItems'))
   addedItemsInCart = JSON.parse(localStorage.getItem('CartItems'));
-console.log(addedItemsInCart)
 
 
 // show on home function
@@ -247,13 +246,7 @@ function openProduct() {
         <h3>₹${(productTitles[count].price * 85).toFixed(0)}</h3>
         <button class="CartBtn" id="addCart">
         <span class="IconContainer"> 
-        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
-          </span>
-        <p class="text" id ="addCart-msg">Add to Cart</p>
-        </button>
-        <p>${productTitles[count].description}</p>
-        </div>
-        </div>`;
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg></span><p class="text" id ="addCart-msg">Add to Cart</p></button><p>${productTitles[count].description}</p> </div> </div>`;
 
         var productShow = document.getElementById('viewProduct');
         productShow.innerHTML = '';
@@ -295,13 +288,18 @@ function closeProductView() {
 
 var notifyArea = document.getElementById('notification-area');
 var notifyMsg = document.getElementById('notify-msg');
+var isnotified = false;
 
 function notify(msg) {
-  notifyMsg.textContent = msg;
-  notifyArea.classList.add('open');
-  setTimeout(() => {
-    notifyArea.classList.remove('open');
-  }, 3000);
+  if (isnotified == false) {
+    isnotified = true;
+    notifyMsg.textContent = msg;
+    notifyArea.classList.add('open');
+    setTimeout(() => {
+      notifyArea.classList.remove('open');
+      isnotified = false;
+    }, 3000);
+  }
 }
 
 
@@ -436,59 +434,137 @@ personalBtn.addEventListener('click', () => {
 
 })
 backPersonalModal.addEventListener('click', () => {
-  if (profileUserName.value == localStorage.getItem('userName') && profileUserMail.value == localStorage.getItem('userEmail')) 
+  if (profileUserName.value == localStorage.getItem('userName') && profileUserMail.value == localStorage.getItem('userEmail'))
   {
     personalInfoModal.classList.remove('scale');
   }
-  else{
-   if(confirm('Are you sure to Discard changes')){
+  else {
+    if (confirm('Are you sure to Discard changes')) {
       personalInfoModal.classList.remove('scale');
-   }
+    }
   }
 })
 
-profileUserName.addEventListener('keydown',saveUserDetails);
-profileUserMail.addEventListener('keydown',saveUserDetails);
+profileUserName.addEventListener('keydown', saveUserDetails);
+profileUserMail.addEventListener('keydown', saveUserDetails);
 
-function saveUserDetails(){
-    if(profileUserName.value != localStorage.getItem('userName') || profileUserMail.value != localStorage.getItem('UserEmail')){
+function saveUserDetails() {
+  if (profileUserName.value != localStorage.getItem('userName') || profileUserMail.value != localStorage.getItem('UserEmail')) {
     saveBtn.disabled = false;
-    saveBtn.addEventListener('click',()=>{
-      localStorage.setItem('userName',profileUserName.value);
-      localStorage.setItem('userEmail',profileUserMail.value);
+    saveBtn.addEventListener('click', () => {
+      localStorage.setItem('userName', profileUserName.value);
+      localStorage.setItem('userEmail', profileUserMail.value);
       notify('Saved Details');
     })
   }
 }
 
-// address btn
+// address btn-------------------
 
 var addressBtn = document.getElementById('address');
 var addressView = document.getElementById('address-view');
 var closeAddress = document.getElementById('close-address');
-var newaddressBtn = document.querySelector('new-address');
-var deleteAddressBtn = document.querySelectorAll('.delete-address');
-let a= 0;
+var newaddressBtn = document.querySelector('#new-address');
+let a = 0;
+let addressForm = document.getElementById('newAddress');
+let closeAddressForm = document.getElementById('closeForm');
+var saveAddressBtn = document.getElementById('saveAddress');
 
-addressBtn.addEventListener('click',()=>{
+addressBtn.addEventListener('click', () => {
+  showallAddress();
   addressView.classList.add('scale');
-  closeAddress.addEventListener('click',()=>{
+  removeAddress();
+  closeAddress.addEventListener('click', () => {
     addressView.classList.remove('scale');
   })
 });
 
-if(deleteAddressBtn.length > 0){
-deleteAddressBtn.forEach(()=>{
-  deleteAddressBtn[a].addEventListener('click',(e)=>{
-    if(confirm('Are you sure ?'))
-    allAddress.removeChild(e.target.parentElement.parentElement)
-  })
-})
-}
-else{
-  allAddress.innerHTML = '<h2>Click New for add a address</h2>'
+newaddressBtn.addEventListener('click', () => {
+  addressForm.classList.add('slideDown');
+});
+
+class Address {
+  constructor(name, mobile, pincode, state, city, type, lineOne, lineTwo) {
+    this.name = name;
+    this.mobile = mobile;
+    this.pincode = pincode;
+    this.state = state;
+    this.city = city;
+    this.type = type;
+    this.lineOne = lineOne;
+    this.lineTwo = lineTwo;
+  }
+};
+let addresses = [];
+
+function saveAdress() {
+  var AddressName = document.getElementById('addressName');
+  var AddressMobile = document.getElementById('addressMobile');
+  var AddressPincode = document.getElementById('addressPincode');
+  var AddressState = document.getElementById('addressState');
+  var AddressCity = document.getElementById('addressCity');
+  var AddressType = document.getElementById('addressType');
+  var AddressLineOne = document.getElementById('addressLine1');
+  var AddressLineTwo = document.getElementById('addressLine2');
+
+  if (AddressName.value && AddressMobile.value && AddressPincode.value && AddressState.value && AddressCity.value && AddressType.value && AddressLineOne.value && AddressLineTwo.value) {
+    if (AddressMobile.value.length == 10) {
+      addresses.push(new Address(AddressName.value, AddressMobile.value, AddressPincode.value, AddressState.value, AddressCity.value, AddressType.value, AddressLineOne.value, AddressLineTwo.value));
+
+      var a = document.createElement('div');
+      a.className = 'address';
+      a.innerHTML = `<div class="address-info"><h4>${AddressType.value}</h4><p>${AddressName.value}, ${AddressLineOne.value},<br>${AddressCity.value},${AddressPincode.value}</p></div><div class="delete-address"><button class="fa fa-trash"></button></div></div>`;
+
+      document.getElementById('allAddress').appendChild(a);
+      storeAddress();
+      addressForm.classList.remove('slideDown');
+      removeAddress();
+    }
+    else {
+      notify('Enter a Valid Number')
+    }
+  }
+  else {
+    notify('All Fields Are Required');
+  }
 }
 
+function removeAddress() {
+  var deleteAddressBtn = document.querySelectorAll('.delete-address');
+  var tmpallAddress = document.querySelectorAll('.address');
+  for (let y = 0; y < deleteAddressBtn.length; y++) {
+    deleteAddressBtn[y].addEventListener('click', () => {
+      document.getElementById('allAddress').removeChild(tmpallAddress[y]);
+      addresses.splice(y, 1);
+      storeAddress();
+    })
+  }
+}
+
+function storeAddress() {
+  localStorage.setItem('addresses', JSON.stringify(addresses));
+}
+
+
+function showallAddress() {
+  if (localStorage.getItem('addresses')) {
+    if (addresses.length == 0){
+      notify('Click on New For a New Address');
+    }
+    else {
+      console.log('in if condition ')
+      addresses = JSON.parse(localStorage.getItem('addresses'));
+      document.getElementById('allAddress').innerHTML = '';
+      for (let z = 0; z < addresses.length; z++) {
+        var a = document.createElement('div');
+        a.className = 'address';
+        a.innerHTML = `<div class="address-info"><h4>${addresses[z].type}</h4><p>${addresses[z].name}, ${addresses[z].lineOne},<br>${addresses[z].city},${addresses[z].pincode}</p></div><div class="delete-address"><button class="fa fa-trash"></button></div></div>`;
+        document.getElementById('allAddress').appendChild(a);
+        storeAddress();
+      }
+    }
+  }
+}
 
 // orders btn
 

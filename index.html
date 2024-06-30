@@ -180,15 +180,7 @@
           <i class="fa fa-times" id="close-address"></i>
         </div>
         <div class="addresses" id="allAddress">
-          <div class="address">
-            <div class="address-info">
-              <h4>Home</h4>
-              <p>184, Sadopur main road, near airtel tower <br>uttarpradesh 203207</p>
-            </div>
-            <div class="delete-address">
-              <button class="fa fa-trash"></button>
-            </div>
-          </div>
+
         </div>
         <div class="add-new">
           <button id="new-address">+ New</button>
@@ -242,7 +234,32 @@
       </div>
     </div>
 
-
+    <!----- New Address form ------------------>
+    <div class="newAddFormArea" id="newAddress">
+      <div class="newAddressForm">
+        <div class="closeNew">
+          <button id="closeForm" onclick="document.getElementById('newAddress').classList.remove('slideDown')" class="fa fa-angle-left">
+           </button>
+        </div>
+        <div class="addForm">
+          <input type="name" placeholder="Full Name (required)" id="addressName">
+          <input type="tel" placeholder="Phone Number (required)" id="addressMobile">
+          <div class="addressForm-location">
+            <input type="number" placeholder="Pincode *" id="addressPincode">
+            <input type="text" placeholder="State *" id="addressState">
+            <input type="text" placeholder="City *" id="addressCity">
+            <select id="addressType">
+              <option value="Home">Home</option>
+              <option value="Work">Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <input type="text" placeholder="House No. Building (Required)" id="addressLine1">
+          <input type="text" placeholder="Road Name, Area , Landmark (required)" id="addressLine2">
+          <button id="saveAddress" onclick="saveAdress()">Save Address</button>
+        </div>
+      </div>
+    </div>
 
 
     <script src="app.js"></script>
