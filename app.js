@@ -510,7 +510,6 @@ function saveAdress() {
   if (AddressName.value && AddressMobile.value && AddressPincode.value && AddressState.value && AddressCity.value && AddressType.value && AddressLineOne.value && AddressLineTwo.value) {
     if (AddressMobile.value.length == 10) {
       addresses.push(new Address(AddressName.value, AddressMobile.value, AddressPincode.value, AddressState.value, AddressCity.value, AddressType.value, AddressLineOne.value, AddressLineTwo.value));
-
       var a = document.createElement('div');
       a.className = 'address';
       a.innerHTML = `<div class="address-info"><h4>${AddressType.value}</h4><p>${AddressName.value}, ${AddressLineOne.value},<br>${AddressCity.value},${AddressPincode.value}</p></div><div class="delete-address"><button class="fa fa-trash"></button></div></div>`;
@@ -518,7 +517,15 @@ function saveAdress() {
       document.getElementById('allAddress').appendChild(a);
       storeAddress();
       addressForm.classList.remove('slideDown');
+      AddressCity.value = '';
+      AddressName.value = '';
+      AddressMobile.value = '';
+      AddressPincode.value = '';
+      AddressState.value = '';
+      AddressLineOne.value = '';
+      AddressLineTwo.value = '';
       removeAddress();
+
     }
     else {
       notify('Enter a Valid Number')
@@ -547,21 +554,17 @@ function storeAddress() {
 
 
 function showallAddress() {
+  notify('Click on New For a New Address');
   if (localStorage.getItem('addresses')) {
-    if (addresses.length == 0){
-      notify('Click on New For a New Address');
-    }
-    else {
-      console.log('in if condition ')
-      addresses = JSON.parse(localStorage.getItem('addresses'));
-      document.getElementById('allAddress').innerHTML = '';
-      for (let z = 0; z < addresses.length; z++) {
-        var a = document.createElement('div');
-        a.className = 'address';
-        a.innerHTML = `<div class="address-info"><h4>${addresses[z].type}</h4><p>${addresses[z].name}, ${addresses[z].lineOne},<br>${addresses[z].city},${addresses[z].pincode}</p></div><div class="delete-address"><button class="fa fa-trash"></button></div></div>`;
-        document.getElementById('allAddress').appendChild(a);
-        storeAddress();
-      }
+    console.log('in if condition ')
+    addresses = JSON.parse(localStorage.getItem('addresses'));
+    document.getElementById('allAddress').innerHTML = '';
+    for (let z = 0; z < addresses.length; z++) {
+      var a = document.createElement('div');
+      a.className = 'address';
+      a.innerHTML = `<div class="address-info"><h4>${addresses[z].type}</h4><p>${addresses[z].name}, ${addresses[z].lineOne},<br>${addresses[z].city},${addresses[z].pincode}</p></div><div class="delete-address"><button class="fa fa-trash"></button></div></div>`;
+      document.getElementById('allAddress').appendChild(a);
+      storeAddress();
     }
   }
 }
