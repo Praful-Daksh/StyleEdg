@@ -44,7 +44,7 @@ function showonUi(data) {
       var item = document.createElement('div');
       item.className = 'item';
       item.innerHTML = ` <div class="image">
-                    <img src="${products[index].images[0]}" width="100%">
+                    <img src="${products[index].images[0]}" width="100%" loading="lazy" >
           </div>
           <div class="item-details">
             <p>${products[index].title.slice(0,20)+'...'}</p>
@@ -52,10 +52,6 @@ function showonUi(data) {
             <p>₹${(products[index].price * 85).toFixed(0)}</p>
           </div>`;
       itemList.appendChild(item);
-
-      // storing every product for using it another place 
-
-
       productTitles.push(new aProduct(products[index].title, products[index].brand, products[index].price, products[index].description,
         (products[index].images[1]) ? products[index].images[1] : products[index].images[0],
       ));
@@ -188,6 +184,7 @@ searchBar.addEventListener('keyup', (e) => {
   if (e.key == "Enter")
   {
     if (searchBar.value != '') {
+      document.getElementById('trending-head').innerHTML = `Search Results For <span style="color:rgb(233, 185, 0);">"${searchBar.value}"</span>`;
       sectionOne.style.display = 'none';
       sectionTwo.style.display = 'none';
       getSearchedProducts(searchBar.value);
