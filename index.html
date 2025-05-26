@@ -1,142 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="StyleEdg - Your premier online fashion destination with summer sales and trending products">
-  <title>StyleEdg - Home | Fashion & Style</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=0.8">
+  <title>StyleEdg - home</title>
+
   <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
+
+  <!-- head -->
   <div class="wrap">
-    <!-- Header -->
-    <header role="banner">
-      <nav role="navigation" aria-label="Main navigation">
+    <header>
+      <nav>
         <div class="logo">
-          <h1 onclick="window.location.href = 'index.html'" tabindex="0" role="button" aria-label="StyleEdg home">
-            <span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg
-          </h1>
+          <h1 onclick="window.location.href = 'index.html'"><span style="color:#DC7A1B;">S</span>tyle<span style="color:#DC7A1B">E</span>dg</h1>
         </div>
         <div id="search-tab">
-          <label for="search-bar" class="sr-only">Search products</label>
-          <input type="search" id="search-bar" placeholder="What you want to Buy !?" aria-label="Search products">
+          <input type="search" id="search-bar" placeholder="What you want to Buy !?">
         </div>
         <div class="icons">
-          <button type="button" id="search-icon" aria-label="Search">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-          <button type="button" id="cart" aria-label="Shopping cart">
-            <i class="fa fa-cart-shopping" aria-hidden="true"></i>
-          </button>
-          <button type="button" id="user" aria-label="User profile">
-            <i class="fa-solid fa-user" aria-hidden="true"></i>
-          </button>
+          <i class="fa fa-search" id="search-icon"></i>
+          <i class="fa fa-cart-shopping" id="cart"></i>
+          <i class="fa-solid fa-user" id="user"></i>
         </div>
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="new-collection" id="section-1" role="banner">
+    <!-- home main image-->
+
+    <section class="new-collection" id="section-1">
       <div class="main">
-        <h1>SUMMER SALE IS LIVE!</h1>
+        <h1>SUMMER SALE IS LIVE !</h1>
         <p>Enjoy Exciting Offers and Cashbacks</p>
-        <button id="explore" type="button">SHOP NOW</button>
+        <button id="explore">SHOP NOW</button>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="customer-trust" id="section-2" aria-labelledby="features-heading">
+    <!-- Home feature items-->
+
+    <section class="customer-trust" id="section-2">
       <div class="features">
         <div class="delivery">
-          <i class="fa fa-truck-fast" aria-hidden="true"></i>
+          <i class="fa fa-truck-fast"></i>
           <h3>Fast Delivery</h3>
           <p>Free and Fast Delivery</p>
         </div>
         <div class="return">
-          <i class="fa fa-rotate-left" aria-hidden="true"></i>
+          <i class="fa fa-rotate-left"></i>
           <h3>Return Policy</h3>
           <p>Easy return and refunds</p>
         </div>
         <div class="support">
-          <i class="fa fa-headset" aria-hidden="true"></i>
+          <i class="fa fa-headset"></i>
           <h3>24/7 Support</h3>
           <p>Customer Support</p>
         </div>
         <div class="payment">
-          <i class="fa fa-money-bill-transfer" aria-hidden="true"></i>
+          <i class="fa fa-money-bill-transfer"></i>
           <h3>Secure Payment</h3>
           <p>Safe and Secure Payments</p>
         </div>
       </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="home-shop-items" id="shop-items" aria-labelledby="products-heading">
+    <!--home products-->
+
+    <section class="home-shop-items" id="shop-items">
       <div class="trending-products">
-        <h1 id="products-heading">Trending Products</h1>
-        <div class="shop-items" id="item-list" role="list">
-          <!-- Products will be dynamically loaded here -->
+        <h1>Trending Products</h1>
+        <div class="shop-items" id="item-list">
         </div>
-        <div id="no-result" role="alert" aria-live="polite">
-          <!-- No results message will appear here -->
+        <div id="no-result">
+
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer role="contentinfo">
+    <!--footer-->
+
+    <footer>
       <div class="foot">
         <div class="newsletter">
           <h4>Newsletter</h4>
-          <p>Subscribe to our newsletter to stay tuned about new arrivals and ongoing sales.</p>
-          <form class="news-input" role="form" aria-label="Newsletter subscription">
-            <label for="newsletter-email" class="sr-only">Your email address</label>
-            <i class="fa fa-envelope" style="color:#DC7A1B" aria-hidden="true"></i>
-            <input type="email" id="newsletter-email" placeholder="Your Email" required aria-required="true">
-            <button type="submit" class="sr-only">Subscribe</button>
-          </form>
+          <p>Subscribe to our newsletter To stay tuned about new arrivals and ongoing Sales.</p>
+          <div class="news-input">
+            <i class="fa fa-envelope" style="color:#DC7A1B"></i>
+            <input type="email" placeholder="Your Email">
+          </div>
         </div>
       </div>
     </footer>
 
-    <!-- Registration Modal -->
-    <div class="modal" id="modal" role="dialog" aria-labelledby="registration-title" aria-modal="true">
+    <!--Registration Form -->
+
+    <div class="modal" id="modal">
       <div class="sign-in-modal">
-        <form class="sign-up" role="form">
-          <h1 id="registration-title">Register Yourself</h1>
-          <label for="reg-name" class="sr-only">Full Name</label>
-          <input type="text" id="reg-name" placeholder="Enter Your Name" required aria-required="true">
-          
-          <label for="reg-email" class="sr-only">Email Address</label>
-          <input type="email" id="reg-email" placeholder="Enter your email" required aria-required="true">
-          
-          <label for="reg-password" class="sr-only">Password</label>
-          <input type="password" id="reg-password" placeholder="Create Password" required aria-required="true">
-          
-          <label for="confirm-password" class="sr-only">Confirm Password</label>
-          <input type="password" id="confirm-password" placeholder="Confirm Password" required aria-required="true">
-          
+        <div class="sign-up">
+          <h1>Register Yourself</h1>
+          <input type="text" id="reg-name" placeholder="Enter Your Name">
+          <input type="email" id="reg-email" placeholder="Enter your email">
+          <input type="password" id="reg-password" placeholder="Create Password">
+          <input type="password" id="confirm-password" placeholder="Confirm Password">
           <div>
             <input type="checkbox" id="show-pass">
             <label for="show-pass">Show Password</label>
           </div>
-          <button type="submit" id="register">Register</button>
-        </form>
+          <button id="register">Register</button>
+        </div>
         <div class="close-modal">
-          <button type="button" class="fa fa-multiply" id="close-modal" aria-label="Close registration form"></button>
+          <button class="fa fa-multiply" id="close-modal" onclick="closeRegistration()"></button>
         </div>
       </div>
     </div>
 
-    <!-- Loader -->
-    <div id="wrap-loader" role="status" aria-label="Loading">
-      <div class="loader" aria-hidden="true">
+
+    <!--Loader For Finding Products-->
+
+    <div id="wrap-loader">
+      <div class="loader">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
@@ -150,27 +139,131 @@
         <div class="bar11"></div>
         <div class="bar12"></div>
       </div>
-      <span class="sr-only">Loading products...</span>
     </div>
 
-    <!-- Add Screen Reader Only Class -->
-    <style>
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-    </style>
+    <!--Profile -->
 
-    <!-- Rest of the modals and components remain the same but with proper ARIA labels -->
-    <!-- ... -->
+    <div class="profile" id="profile">
+      <div class="profile-head">
+        <div class="back-icon">
+          <i class="fa fa-angle-left" id="back"></i>
+        </div>
+        <div class="setting-heading">
+          <h2>Settings</h2>
+        </div>
+      </div>
+      <div class="settings">
+        <button id="personal">Personal Info <i class="fa fa-angle-right"></i></button>
+        <button id="address">Addresses <i class="fa fa-angle-right"></i></button>
+        <button id="orders">Orders <i class="fa fa-angle-right"></i></button>
+        <button id="contact">Contact Us <i class="fa fa-angle-right"></i></button>
+      </div>
+    </div>
+    <!--Personal Info Option in Settings -->
+    <div class="personal-info" id="personalInfoTrigger">
+      <div class="information ">
+        <div class="personal-image">
+          <i class="fa fa-user"></i>
+        </div>
+        <input type="text" id="user-name">
+        <input type="email" id="user-mail">
+        <button id="personalInfoSave">Save</button>
+        <button id="personal-back">Back</button>
+      </div>
+    </div>
+
+    <!----Addresses Option In Settings -->
+
+    <div class="address-view" id="address-view">
+      <div class="address-menu">
+        <div class="menu-head">
+          <i class="fa fa-times" id="close-address"></i>
+        </div>
+        <div class="addresses" id="allAddress">
+
+        </div>
+        <div class="add-new">
+          <button id="new-address">+ New</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Product view -->
+
+    <div class="product-view" id="viewProduct">
+
+    </div>
+
+
+    <!-- Notifications -->
+    <div class="notifications-container" id="notification-area">
+      <div class="alert">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 alert-svg">
+              <path clip-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" fill-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="alert-prompt-wrap">
+            <p class="text-sm text-yellow-700" id="notify-msg">
+              All fields are required
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--- cart -->
+
+    <div class="cart-view" id="ViewCart">
+      <div class="cart-modal">
+        <div class="cart-wrap">
+          <div class="cart-items" id="cartItems">
+          </div>
+          <div class="cart-total">
+            <div class="total-price">
+              <p>Total</p>
+              <h4 id="total-amount"></h4>
+            </div>
+            <button id="checkout">Checkout</button>
+          </div>
+          <button id="closeCart" class="fa fa-angle-left" onclick="document.getElementById('ViewCart').style.display = 'none';
+          location.reload();"></button>
+        </div>
+      </div>
+    </div>
+
+    <!----- New Address form ------------------>
+    <div class="newAddFormArea" id="newAddress">
+      <div class="newAddressForm">
+        <div class="closeNew">
+          <button id="closeForm" onclick="document.getElementById('newAddress').classList.remove('slideDown')" class="fa fa-angle-left">
+           </button>
+        </div>
+        <div class="addForm">
+          <input type="name" placeholder="Full Name (required)" id="addressName">
+          <input type="tel" placeholder="Phone Number (required)" id="addressMobile">
+          <div class="addressForm-location">
+            <input type="number" placeholder="Pincode *" id="addressPincode">
+            <input type="text" placeholder="State *" id="addressState">
+            <input type="text" placeholder="City *" id="addressCity">
+            <select id="addressType">
+              <option value="Home">Home</option>
+              <option value="Work">Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <input type="text" placeholder="House No. Building (Required)" id="addressLine1">
+          <input type="text" placeholder="Road Name, Area , Landmark (required)" id="addressLine2">
+          <button id="saveAddress" onclick="saveAdress()">Save Address</button>
+        </div>
+      </div>
+    </div>
+
 
     <script src="app.js"></script>
-  </body>
+</body>
+
+
 </html>
