@@ -2,7 +2,7 @@
 
 StyleEdg is a modern, responsive e-commerce web application built with HTML, CSS, and JavaScript. It features a clean UI, product search, shopping cart, user registration, and more.
 
-You can check it out [heare](https://praful-daksh.github.io/StyleEdg/)
+You can check it out [here](https://praful-daksh.github.io/StyleEdg/)
 
 ## Features
 
